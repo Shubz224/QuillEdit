@@ -4,8 +4,6 @@ import "quill/dist/quill.snow.css"
 import {io} from 'socket.io-client'
 
 
-
-
 //setting up toolbar 
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -19,9 +17,8 @@ const TOOLBAR_OPTIONS = [
   ["clean"],
 ]
 
-//setting up quill 
 export default function TextEditor() {
-
+//socket code
   useEffect(()=>{
     const socket = io("http://localhost:3001")
     return ()=>{
@@ -29,7 +26,9 @@ export default function TextEditor() {
     }
   },[]);
 
+  //setting up quill 
 const wrapperRef  = useCallback(wrapper =>{
+
   if(wrapper == null) return ;
   wrapper.innerHtml = ""
   const editor = document.createElement('div');
