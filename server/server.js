@@ -6,7 +6,7 @@ const io = require("socket.io")(
         },
     }
 )
- addEventListener
+
 io.on("connection",socket =>{
     console.log("connected");
 })
