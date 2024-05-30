@@ -41,8 +41,21 @@ const [quill ,setQuill] = useState();
     }
   },[]);
 
+// function to track text change
 
-  
+
+useEffect(()=>{
+  const handler = (delta,oldDelta,source)=>{
+    if(source !== 'user')return 
+    socket.emit('send-changes',delta);
+  }
+  quill.on('text-change',handler);
+
+  return ()=>{
+    quill.off('text-change',handler)
+  }
+},[socket,quill])
+
 
   //setting up quill 
 const wrapperRef  = useCallback(wrapper =>{
