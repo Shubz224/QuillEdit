@@ -4,6 +4,11 @@ import "quill/dist/quill.snow.css";
 import { io } from "socket.io-client";
 import { useParams } from "react-router-dom";
 
+
+const SAVE_INTERVAL_MS = 2000
+
+
+
 //setting up toolbar
 const TOOLBAR_OPTIONS = [
   [{ header: [1, 2, 3, 4, 5, 6, false] }],
@@ -21,8 +26,6 @@ export default function TextEditor() {
   const { id: documentId } = useParams();
   const [socket, setSocket] = useState();
   const [quill, setQuill] = useState();
-
-  console.log(documentId);
   //creating socket and disconnecting on its own after text editor unmount
   useEffect(() => {
     const s = io("http://localhost:3001");
@@ -59,6 +62,30 @@ export default function TextEditor() {
       socket.off("receive-changes", handler);
     };
   }, [socket, quill]);
+
+
+//saving in database 
+
+useEffect(()=>{
+ 
+  if(socket == null || quill == null) return 
+  const intreval = setInterval(()=>{
+    socket.emit('save-document',quill.getContents())
+   },SAVE_INTERVAL_MS)
+   return ()=>{
+    clearInterval(intreval)
+   }
+},[socket,quill])
+
+
+
+
+
+
+
+
+
+
 
   // function to track text change
 

@@ -1,5 +1,6 @@
-import mongoose from "mongoose";
-import Document from "./document.js"
+
+const mongoose = require("mongoose")
+const Document = require("./Document")
 
 const io = require("socket.io")(3001, {
   cors: {

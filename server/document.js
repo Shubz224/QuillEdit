@@ -1,10 +1,8 @@
-import  {Schema, model} from 'mongoose'
+const { Schema, model } = require("mongoose")
 
-const Doc = new Schema ({
-    _id : String,
-    data : Object,
+const Document = new Schema({
+  _id: String,
+  data: Object,
 })
 
-const Document  = model ("Document",Doc);
-
-export default Document ;
+module.exports = model("Document", Document)
