@@ -23,15 +23,6 @@ const [socket,setSocket] = useState();
 const [quill ,setQuill] = useState();
 
 
-
-
-
-
-
-
-
-
-
 //creating socket and disconnecting on its own after text editor unmount
   useEffect(()=>{
     const s= io("http://localhost:3001")
@@ -45,6 +36,10 @@ const [quill ,setQuill] = useState();
 
 
 useEffect(()=>{
+
+  // making sure we are having socket and qill before updating any delta
+  if(socket == null || quill == null )return 
+
   const handler = (delta,oldDelta,source)=>{
     if(source !== 'user')return 
     socket.emit('send-changes',delta);
