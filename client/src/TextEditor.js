@@ -32,6 +32,35 @@ const [quill ,setQuill] = useState();
     }
   },[]);
 
+  useEffect(()=>{
+
+    // making sure we are having socket and qill before updating any delta
+    if(socket == null || quill == null )return 
+  
+    const handler = (delta)=>{
+      quill.updateContents(delta)
+    }
+  
+    //eventlistner for whenever qill  has  text that changes  we will send  it to or emit it to client side
+    socket.on('receive-changes',handler)
+  
+    return ()=>{
+      socket.off('receive-changes',handler)
+    }
+  },[socket,quill])
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function to track text change
 
 
