@@ -44,7 +44,9 @@ useEffect(()=>{
     if(source !== 'user')return 
     socket.emit('send-changes',delta);
   }
-  quill.on('text-change',handler);
+
+  //eventlistner for whenever qill  has  text that changes  we will send  it to or emit it to client side
+  quill.on('text-change',handler)
 
   return ()=>{
     quill.off('text-change',handler)

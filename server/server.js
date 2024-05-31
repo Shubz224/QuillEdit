@@ -8,5 +8,8 @@ const io = require("socket.io")(
 )
 
 io.on("connection",socket =>{
-    console.log("connected");
+    socket.on('send-changes', delta =>{
+        socket.broadcast.emit('receive-changes',delta)
+    })
+   
 })
