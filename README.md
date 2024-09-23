@@ -1,6 +1,6 @@
 # QuillEdit - Collaborative Document Editor
 
-![Project Logo or Intro Image](path/to/your/project-image.png)
+![Project Logo or Intro Image](./assets/Screenshot%20(94).png)
 
 ## 📄 About
 
@@ -26,11 +26,15 @@
 
 - **Real-Time Editing:** Collaborate with others in real-time using the same document.
   
-  ![Real-Time Collaboration](path/to/your/feature-image1.png)
+  ![Real-Time Collaboration](./assets/Screenshot%20(96).png)
 
 - **Text Formatting with Quill:** A clean, intuitive interface for editing and formatting documents.
 
-  ![Text Formatting](path/to/your/feature-image2.png)
+  ![Text Formatting](./assets//Screenshot%20(96).png)
+
+  - **Managing Docs in Db:** All docs are saved in real time with Unique uuid's in MongoDb.
+
+  ![Text Formatting](./assets//Screenshot%20(97).png)
 
 ## 🛠️ Technologies Used
 
@@ -56,9 +60,3 @@ In the future, I plan to enhance **QuillEdit** by adding:
 - **Refreshed UI:** A more modern and responsive user interface for a better editing experience.
 - **Live Editing Feature:** Users will be able to see who is editing the document live, with indicators showing their presence.
 
-## 🛠️ How to Install
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/quilledit.git
-.
